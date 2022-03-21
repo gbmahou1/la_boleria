@@ -102,6 +102,11 @@ async function getOrder (req, res)
         }
         
 
+        if (orders.rows.length == 0)
+        {
+            return res.status(404).send([])
+        }
+
         res.send(orders.rows.map(row => {
             const [clientId, clientName, address, phone, cakeId, cakeName, price, description, image, createdAt, quantity, totalPrice] = row;
 
@@ -126,14 +131,6 @@ async function getOrder (req, res)
         
         console.log(orders.rows.length)
         
-        if (orders.rows.length == 0)
-        {
-            res.sendStatus(404)
-        }
-        else
-        {
-            res.sendStatus(200)
-        }
 
     }
     catch (error)
@@ -174,7 +171,11 @@ async function getOrderId (req, res)
         rowMode: 'array'
     }, [id]);
 
-
+    console.log (orders.rows.length)
+    if (orders.rows.length === 0)
+    {
+        return res.sendStatus(404)
+    }
 
     res.send(orders.rows.map(row => {
         const [clientId, clientName, address, phone, cakeId, cakeName, price, description, image, createdAt, quantity, totalPrice] = row;
@@ -198,12 +199,10 @@ async function getOrderId (req, res)
 
     }));
 
-    if (orders.rows.length === 0)
-    {
-        return res.sendStatus(404)
-    }
 
-    return res.sendStatus(200)
+
+
+    
 
 }
 
