@@ -1,0 +1,17 @@
+{
+  "name": "la_boleria",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dayjs": "^1.11.0",
+    "joi": "^17.6.0",
+    "pg": "^8.7.3"
+  }
+}
