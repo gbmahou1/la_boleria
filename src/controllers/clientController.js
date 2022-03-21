@@ -68,12 +68,10 @@ async function getClientId (req, res){
 
         if ( orders.rows.length === 0)
         {
-            return res.sendStatus(404)
+            return res.status(404).send([])
         }
 
         res.send(orders.rows)
-
-        res.sendStatus(200)
 
     }
     catch (error)

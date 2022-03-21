@@ -147,7 +147,7 @@ async function getOrderId (req, res)
 
     if ( !id || parseInt(id)<0 )
     {
-        return res.sendStatus(400)
+        return res.status(404).send([])
     }
 
     let orders = await connection.query({
@@ -174,7 +174,7 @@ async function getOrderId (req, res)
     console.log (orders.rows.length)
     if (orders.rows.length === 0)
     {
-        return res.sendStatus(404)
+        return res.status(404).send([])
     }
 
     res.send(orders.rows.map(row => {
@@ -198,12 +198,6 @@ async function getOrderId (req, res)
         }
 
     }));
-
-
-
-
-    
-
 }
 
 export { postOrder, getOrder, getOrderId }
